@@ -14,21 +14,23 @@ class App extends Component {
   }
 
   getData = async search => {
-    const getBooks = await fetch(
-     process.env.REACT_APP_BOOKS_API || `http://localhost:3000/books`
-    );
-    const bookList  = await getBooks.json();
+    const url =
+      process.env.REACT_APP_BOOKS_API || `http://localhost:3000/books`;
+    const getBooks = await fetch(url);
+    const bookList = await getBooks.json();
     this.setState({
       books: bookList
-    })
+    });
   };
 
   render() {
-    return <div>
-    {this.state.books.map((book,id) => 
-      <li key={book._id}> 
-      {book.title} 
-      </li>)}</div>;
+    return (
+      <div>
+        {this.state.books.map((book, id) => (
+          <li key={book._id}>{book.title}</li>
+        ))}
+      </div>
+    );
   }
 }
 
