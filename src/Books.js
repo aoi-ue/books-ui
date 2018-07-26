@@ -10,15 +10,20 @@ class Books extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getData();
+  async componentDidMount() {
+    await this.getData();
   }
 
   async getData() {
-    const getBooks = await fetch(`${url}/books`);
-    const bookList = await getBooks.json();
+    // const getBooks = await fetch(`${url}/books` );
+    // const bookList = await getBooks.json();
     this.setState({
-      books: bookList
+      books: [
+        {
+          title: "Hello",
+          _id: "12345"
+        }
+      ]
     });
   }
   render() {
